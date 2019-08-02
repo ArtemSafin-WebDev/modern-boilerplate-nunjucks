@@ -1,0 +1,54 @@
+@mixin container() {
+  max-width: $max-container-width;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+@mixin visuallyHidden() {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+@mixin noHighlight() {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@mixin objectFitCover() {
+  object-fit: cover;
+  object-position: center;
+  font-family: 'object-fit: cover; object-position: center;';
+}
+
+@mixin objectFitCoverTop() {
+  object-fit: cover;
+  object-position: top;
+  font-family: 'object-fit: cover; object-position: top;';
+}
+
+@mixin objectFitContain() {
+  object-fit: contain;
+  font-family: 'object-fit: contain;';
+}

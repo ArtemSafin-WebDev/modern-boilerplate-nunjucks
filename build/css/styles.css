@@ -1,0 +1,70 @@
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0; }
+
+html {
+  box-sizing: border-box; }
+
+body {
+  min-width: 320px;
+  line-height: 1.4;
+  font-size: 16px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif; }
+
+ul {
+  list-style: none; }
+
+input,
+textarea {
+  -webkit-appearance: none;
+  border-radius: 0; }
+
+textarea {
+  resize: none;
+  box-shadow: none; }
+
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-appearance: none; }
+
+a {
+  text-decoration: none; }
+
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column; }
+
+img {
+  max-width: 100%; }
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap; }
+
+::-moz-selection {
+  color: white;
+  background: #256963; }
+
+::selection {
+  color: white;
+  background: #256963; }
