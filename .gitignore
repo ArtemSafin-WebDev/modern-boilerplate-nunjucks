@@ -100,3 +100,8 @@ About
 
 yarn.lock
 package-lock.json
+
+
+# MacOS Files
+
+.DS_Store

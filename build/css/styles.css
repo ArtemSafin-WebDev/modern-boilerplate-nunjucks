@@ -12,7 +12,7 @@ body {
   min-width: 320px;
   line-height: 1.4;
   font-size: 16px;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   font-family: sans-serif; }
@@ -23,7 +23,9 @@ ul {
 input,
 textarea {
   -webkit-appearance: none;
-  border-radius: 0; }
+  border-radius: 0;
+  width: 100%;
+  display: block; }
 
 textarea {
   resize: none;
@@ -37,10 +39,13 @@ button {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  -webkit-appearance: none; }
+  -webkit-appearance: none;
+  display: inline-block; }
 
 a {
   text-decoration: none; }
+  a:link, a:visited {
+    color: inherit; }
 
 main {
   flex-grow: 1;
@@ -48,6 +53,7 @@ main {
   flex-direction: column; }
 
 img {
+  display: block;
   max-width: 100%; }
 
 .visually-hidden {

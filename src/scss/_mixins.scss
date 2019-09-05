@@ -52,3 +52,24 @@
   object-fit: contain;
   font-family: 'object-fit: contain;';
 }
+
+
+@mixin breakpoint($class) {
+  @if $class == large-desktop {
+      @media only screen and (max-width: $large-desktop-width) { @content; }
+  } @else if $class == desktop {
+      @media only screen and (max-width: $desktop-width) { @content; }
+  } @else if $class == laptop {
+      @media only screen and (max-width: $laptop-width) { @content; }
+  } @else if $class == tablet {
+      @media only screen and (max-width: $tablet-width) { @content; }
+  } @else if $class == small-tablet {
+      @media only screen and (max-width: $small-tablet-width) { @content; }
+  } @else if $class == mobile {
+      @media only screen and (max-width: $mobile-width) { @content; }
+  } @else if $class == small-mobile {
+      @media only screen and (max-width: $small-mobile-width) { @content; }
+  } @else if $class == supersmall-mobile {
+      @media only screen and (max-width: $supersmall-mobile-width) { @content; }
+  }
+}

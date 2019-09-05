@@ -13,7 +13,21 @@ $primary-color: #FEC70A;
 $max-container-width: 1240px;
 
 
+// Breakpoints
 
+$large-desktop-width: 1750px;
+$desktop-width: 1470px;
+$laptop-width: 1200px;
+$tablet-width: 1024px;
+$small-tablet-width: 968px;
+$mobile-width: 768px;
+$small-mobile-width: 576px;
+$supersmall-mobile-width: 360px;
+
+// Retina
+
+$dpi: 144dpi;
+$dppx: 1.5dppx;
 
 
 

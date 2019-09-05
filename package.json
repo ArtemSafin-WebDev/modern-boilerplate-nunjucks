@@ -42,7 +42,6 @@
     "gulp-csso": "^3.0.1",
     "gulp-html-beautify": "^1.0.1",
     "gulp-imagemin": "^5.0.3",
-    "gulp-inject-partials": "^1.0.4",
     "gulp-newer": "^1.4.0",
     "gulp-plumber": "^1.2.1",
     "gulp-rename": "^1.4.0",

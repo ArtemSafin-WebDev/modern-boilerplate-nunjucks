@@ -14,7 +14,7 @@ body {
   min-width: 320px;
   line-height: 1.4;
   font-size: 16px;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   font-family: sans-serif;
@@ -28,6 +28,8 @@ input,
 textarea {
   -webkit-appearance: none;
   border-radius: 0;
+  width: 100%;
+  display: block;
 }
 
 textarea {
@@ -41,10 +43,15 @@ button {
   cursor: pointer;
   user-select: none;
   -webkit-appearance: none;
+  display: inline-block;
 }
 
 a {
   text-decoration: none;
+  &:link,
+  &:visited {
+    color: inherit;
+  }
 }
 
 main {
@@ -54,6 +61,7 @@ main {
 }
 
 img {
+  display: block;
   max-width: 100%;
 }
 
