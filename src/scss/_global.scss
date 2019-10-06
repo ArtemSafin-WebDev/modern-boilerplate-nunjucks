@@ -1,77 +1,94 @@
 *,
 *::after,
 *::before {
-  box-sizing: inherit;
-  margin: 0;
-  padding: 0;
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --max-container-width: 1380px;
+    --content-padding: 4rem;
+    --primary-color: #FEEA74;
+    --primary-font-color: black;
+    --primary-font: 'Roboto', sans-serif;
+    @include breakpoint(laptop) {
+        --content-padding: 2rem;
+    }
 }
 
 html {
-  box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 62.5%;
 }
 
 body {
-  min-width: 320px;
-  line-height: 1.4;
-  font-size: 16px;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  font-family: sans-serif;
+    min-width: 320px;
+    font-family: var(--primary-font);
+    color: var(--primary-font-color, black);
+    font-size: 1.6rem;
+    line-height: 1.2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 ul {
-  list-style: none;
+    list-style: none;
+}
+
+ol {
+    counter-reset: ordered-list;
+    li {
+        counter-increment: ordered-list;
+        &::before {
+            content: counter(ordered-list) '.';
+        }
+    }
 }
 
 input,
 textarea {
-  -webkit-appearance: none;
-  border-radius: 0;
-  width: 100%;
-  display: block;
+    -webkit-appearance: none;
+    border: none;
+    border-radius: 0;
+    font: inherit;
+    outline: none;
 }
 
 textarea {
-  resize: none;
-  box-shadow: none;
+    resize: none;
+    box-shadow: none;
 }
 
 button {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  user-select: none;
-  -webkit-appearance: none;
-  display: inline-block;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    user-select: none;
+    -webkit-appearance: none;
+    font: inherit;
 }
 
 a {
-  text-decoration: none;
-  &:link,
-  &:visited {
-    color: inherit;
-  }
-}
-
-main {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
+    text-decoration: none;
 }
 
 img {
-  display: block;
-  max-width: 100%;
+    max-width: 100%;
+    vertical-align: top;
 }
 
 .visually-hidden {
-  @include visuallyHidden();
+    @include visuallyHidden();
+}
+
+.swiper-slide {
+    box-sizing: border-box;
+    height: auto;
 }
 
 ::selection {
-  color: white;
-  background: $green;
-} 
-
-
+    color: white;
+    background-color: var(--primary-color);
+}

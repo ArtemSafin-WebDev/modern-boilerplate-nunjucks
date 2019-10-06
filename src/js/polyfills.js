@@ -1,4 +1,6 @@
 import objectFitImages from 'object-fit-images';
+import cssVars from 'css-vars-ponyfill';
+import 'picturefill';
 
 export default function() {
     // Полифилл .contains для IE 11
@@ -42,4 +44,8 @@ export default function() {
     // Полифилл для CSS свойства ObjectFit (заполнение контейнера изображением)
 
     objectFitImages();
+
+    // Полифилл CSS переменных
+
+    cssVars();
 }
