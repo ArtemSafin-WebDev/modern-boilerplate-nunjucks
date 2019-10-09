@@ -8,12 +8,12 @@
 
 :root {
     --max-container-width: 1380px;
-    --content-padding: 4rem;
+    --content-padding: 40px;
     --primary-color: #FEEA74;
     --primary-font-color: black;
     --primary-font: 'Roboto', sans-serif;
     @include breakpoint(laptop) {
-        --content-padding: 2rem;
+        --content-padding: 20px;
     }
 }
 
@@ -68,6 +68,7 @@ button {
     user-select: none;
     -webkit-appearance: none;
     font: inherit;
+    outline: none;
 }
 
 a {

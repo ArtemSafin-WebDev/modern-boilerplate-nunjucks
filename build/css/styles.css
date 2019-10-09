@@ -7,13 +7,13 @@
 
 :root {
   --max-container-width: 1380px;
-  --content-padding: 4rem;
+  --content-padding: 40px;
   --primary-color: #FEEA74;
   --primary-font-color: black;
   --primary-font: 'Roboto', sans-serif; }
   @media only screen and (max-width: 75em) {
     :root {
-      --content-padding: 2rem; } }
+      --content-padding: 20px; } }
 
 html {
   box-sizing: border-box;
@@ -60,7 +60,8 @@ button {
       -ms-user-select: none;
           user-select: none;
   -webkit-appearance: none;
-  font: inherit; }
+  font: inherit;
+  outline: none; }
 
 a {
   text-decoration: none; }
