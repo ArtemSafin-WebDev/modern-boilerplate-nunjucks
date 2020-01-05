@@ -5,3 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     polyfills();
     detectTouch();
 });
+
+window.addEventListener('load', function() {
+    document.body.classList('loaded');
+})

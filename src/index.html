@@ -1,8 +1,6 @@
-{% set title = "Главная страница" %} {% extends "layout.html" %} {% block content %}
-
-
-<h2>Content</h2>
-
-
-
+{% set title = "Главная страница" %}
+{% set activePage = "Home"  %}
+{% extends "layout.html" %}
+{% block content %}
+    {% include "blocks/test-block.html" %}
 {% endblock %}

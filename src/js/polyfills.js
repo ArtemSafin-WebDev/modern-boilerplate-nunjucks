@@ -1,6 +1,11 @@
-import objectFitImages from 'object-fit-images';
 import cssVars from 'css-vars-ponyfill';
-import 'picturefill';
+import lazySizes from 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
+import 'lazysizes/plugins/respimg/ls.respimg';
+
+if (!('object-fit' in document.createElement('a').style)) {
+    require('lazysizes/plugins/object-fit/ls.object-fit');
+}
 
 export default function() {
     
@@ -20,13 +25,16 @@ export default function() {
 
     (function(ELEMENT) {
         ELEMENT.matches = ELEMENT.matches || ELEMENT.mozMatchesSelector || ELEMENT.msMatchesSelector || ELEMENT.oMatchesSelector || ELEMENT.webkitMatchesSelector;
-        ELEMENT.closest = ELEMENT.closest || function closest(selector) {
-            if (!this) return null;
-            if (this.matches(selector)) return this;
-            if (!this.parentElement) {return null}
-            else return this.parentElement.closest(selector)
-          };
-    }(Element.prototype));
+        ELEMENT.closest =
+            ELEMENT.closest ||
+            function closest(selector) {
+                if (!this) return null;
+                if (this.matches(selector)) return this;
+                if (!this.parentElement) {
+                    return null;
+                } else return this.parentElement.closest(selector);
+            };
+    })(Element.prototype);
 
     // Полифилл для кастомных событий
 
@@ -40,10 +48,6 @@ export default function() {
     }
 
     window.CustomEvent = CustomEvent;
-
-    // Полифилл для CSS свойства ObjectFit (заполнение контейнера изображением)
-
-    objectFitImages();
 
     // Полифилл CSS переменных
 

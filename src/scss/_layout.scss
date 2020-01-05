@@ -4,7 +4,7 @@
     max-width: calc(var(--max-container-width, 1200px) + (var(--content-padding, 20px) * 2));
     margin: 0 auto;
     padding: 0 var(--content-padding);
-    
+
     &--flex {
         display: flex;
     }
@@ -13,7 +13,7 @@
         align-items: center;
     }
 
-    &--flex-column-direction {
+    &--flex-direction-column {
         flex-direction: column;
     }
 
@@ -29,22 +29,6 @@
     overflow: hidden;
 }
 
-
-
-.page-header,
-.page-footer {
-    background-color: black;
-    color: white;
-    
-    padding: 15px 0;
-}
-
 .page-main {
     flex-grow: 1;
-    background-color: var(--primary-color);
-    padding: 15px 0;
 }
-
-
-
-

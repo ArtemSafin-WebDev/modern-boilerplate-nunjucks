@@ -7,33 +7,27 @@
 }
 
 :root {
-    --max-container-width: 1380px;
-    --content-padding: 40px;
-    --primary-color: #FEEA74;
-    --primary-font-color: black;
-    --primary-font: 'Roboto', sans-serif;
-    @include breakpoint(laptop) {
-        --content-padding: 20px;
-    }
+    --max-container-width: 1240px;
+    --content-padding: 20px;
 }
 
 html {
     box-sizing: border-box;
-    font-size: 62.5%;
+    font-size: 10px;
 }
 
 body {
     min-width: 320px;
-    font-family: var(--primary-font);
-    color: var(--primary-font-color, black);
     font-size: 1.6rem;
     line-height: 1.2;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    font-family: sans-serif;
 }
 
-ul {
+ul,
+ol {
     list-style: none;
 }
 
@@ -54,11 +48,15 @@ textarea {
     border-radius: 0;
     font: inherit;
     outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    width: 100%;
 }
 
 textarea {
     resize: none;
     box-shadow: none;
+    display: block;
 }
 
 button {
@@ -69,15 +67,38 @@ button {
     -webkit-appearance: none;
     font: inherit;
     outline: none;
+    display: inline-block;
 }
 
 a {
     text-decoration: none;
+    &:link,
+    &:visited {
+        color: inherit;
+    }
 }
 
 img {
     max-width: 100%;
-    vertical-align: top;
+    display: block;
+}
+
+img[data-sizes='auto'] {
+    display: block;
+    width: 100%;
+}
+
+img.lazyload:not([src]) {
+    visibility: hidden;
+}
+
+.lazyload,
+.lazyloading {
+    opacity: 0;
+}
+.lazyloaded {
+    opacity: 1;
+    transition: opacity 300ms;
 }
 
 .visually-hidden {
@@ -91,5 +112,4 @@ img {
 
 ::selection {
     color: white;
-    background-color: var(--primary-color);
 }

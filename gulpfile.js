@@ -1,5 +1,3 @@
-'use strict';
-
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const plumber = require('gulp-plumber');
@@ -8,7 +6,6 @@ const browserSync = require('browser-sync').create();
 const rename = require('gulp-rename');
 const cssMinify = require('gulp-csso');
 const del = require('del');
-const injectPartials = require('gulp-inject-partials');
 const newer = require('gulp-newer');
 const svgSprite = require('gulp-svg-sprite');
 const prettier = require('gulp-prettier');
@@ -34,17 +31,14 @@ gulp.task('sprite', function() {
         .pipe(gulp.dest('src/img'));
 });
 
-
 gulp.task('nunjucks-recompile-all', function() {
     return gulp
         .src('./src/*.+(html|nunjucks|njk)')
-
         .pipe(
             nunjucksRender({
                 path: ['./src/templates', './src/img/symbol']
             })
         )
-
         .pipe(prettier())
         .pipe(gulp.dest('build'))
         .pipe(browserSync.stream());
@@ -54,13 +48,11 @@ gulp.task('nunjucks', function() {
     return gulp
         .src('./src/*.+(html|nunjucks|njk)')
         .pipe(cache('nunjucks'))
-
         .pipe(
             nunjucksRender({
                 path: ['./src/templates', './src/img/symbol']
             })
         )
-
         .pipe(prettier())
         .pipe(gulp.dest('build'))
         .pipe(browserSync.stream());

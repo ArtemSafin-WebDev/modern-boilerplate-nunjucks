@@ -1,82 +1,134 @@
 @mixin noHighlight() {
-  -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent;
 }
 
 @mixin visuallyHidden() {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  white-space: nowrap;
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
 }
 
 @mixin placeholder {
-  &::-webkit-input-placeholder {
-    @content;
-  }
-  &:-moz-placeholder {
-    @content;
-  }
-  &::-moz-placeholder {
-    @content;
-  }
-  &:-ms-input-placeholder {
-    @content;
-  }
+    &::-webkit-input-placeholder {
+        @content;
+    }
+    &:-moz-placeholder {
+        @content;
+    }
+    &::-moz-placeholder {
+        @content;
+    }
+    &:-ms-input-placeholder {
+        @content;
+    }
 }
 
-@mixin noHighlight() {
-  -webkit-tap-highlight-color: transparent;
+
+@mixin fullpageBG {
+    position: relative;
+    background: none;
+    &::before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        left: calc((100vw - 100%) / 2 * -1);
+        width: 100vw;
+        top: 0;
+        bottom: 0;
+        @content;
+    }
 }
 
 @mixin objectFitCover() {
-  object-fit: cover;
-  object-position: center;
-  font-family: 'object-fit: cover; object-position: center;';
+    object-fit: cover;
+    object-position: center;
+    font-family: 'object-fit: cover; object-position: center;';
 }
 
 @mixin objectFitCoverTop() {
-  object-fit: cover;
-  object-position: top;
-  font-family: 'object-fit: cover; object-position: top;';
+    object-fit: cover;
+    object-position: top;
+    font-family: 'object-fit: cover; object-position: top;';
 }
 
-
 @mixin objectFitContain() {
-  object-fit: contain;
-  object-position: center;
-  font-family: 'object-fit: contain; object-position: center;';
+    object-fit: contain;
+    object-position: center;
+    font-family: 'object-fit: contain; object-position: center;';
 }
 
 @mixin objectFitContainBottom() {
-  object-fit: contain;
-  object-position: bottom;
-  font-family: 'object-fit: contain; object-position: bottom;';
+    object-fit: contain;
+    object-position: bottom;
+    font-family: 'object-fit: contain; object-position: bottom;';
 }
-
-
 
 @mixin breakpoint($class) {
-  @if $class == large-desktop {
-      @media only screen and (max-width: (1600 / 16) * 1em) { @content; }
-  } @else if $class == desktop {
-      @media only screen and (max-width: (1400 / 16) * 1em) { @content; }
-  } @else if $class == laptop {
-      @media only screen and (max-width: (1200 / 16) * 1em) { @content; }
-  } @else if $class == tablet {
-      @media only screen and (max-width: (1024 / 16) * 1em) { @content; }
-  } @else if $class == small-tablet {
-      @media only screen and (max-width: (968 / 16) * 1em) { @content; }
-  } @else if $class == mobile {
-      @media only screen and (max-width: (768 / 16) * 1em) { @content; }
-  } @else if $class == small-mobile {
-      @media only screen and (max-width: (576 / 16) * 1em) { @content; }
-  } @else if $class == supersmall-mobile {
-      @media only screen and (max-width: (370 / 16) * 1em) { @content; }
-  }
+    @if $class == large-desktop {
+        @media only screen and (max-width: (1600px)) {
+            @content;
+        }
+    } @else if $class == desktop {
+        @media only screen and (max-width: (1400px)) {
+            @content;
+        }
+    } @else if $class == laptop {
+        @media only screen and (max-width: (1200px)) {
+            @content;
+        }
+    } @else if $class == tablet {
+        @media only screen and (max-width: (1024px)) {
+            @content;
+        }
+    } @else if $class == small-tablet {
+        @media only screen and (max-width: (968px)) {
+            @content;
+        }
+    } @else if $class == mobile {
+        @media only screen and (max-width: (768px)) {
+            @content;
+        }
+    } @else if $class == small-mobile {
+        @media only screen and (max-width: (576px)) {
+            @content;
+        }
+    } @else if $class == supersmall-mobile {
+        @media only screen and (max-width: (370px)) {
+            @content;
+        }
+    }
 }
 
+@mixin breakpointMF($class) {
+    @if $class == large-desktop {
+        @media only screen and (min-width: 1401px) {
+            @content;
+        }
+    } @else if $class == desktop {
+        @media only screen and (min-width: 1201px) {
+            @content;
+        }
+    } @else if $class == laptop {
+        @media only screen and (min-width: 1025px) {
+            @content;
+        }
+    } @else if $class == tablet {
+        @media only screen and (min-width: 969px) {
+            @content;
+        }
+    } @else if $class == small-tablet {
+        @media only screen and (min-width: 769px) {
+            @content;
+        }
+    } @else if $class == mobile {
+        @media only screen and (min-width: 577px) {
+            @content;
+        }
+    }
+}
