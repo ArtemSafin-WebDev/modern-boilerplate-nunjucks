@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <link rel="stylesheet" href="css/styles.min.css" />
         <title>
-            Home Page
+            Sitemap
         </title>
     </head>
     <body class="no-touch" ontouchstart="">
@@ -41,13 +41,58 @@
             </header>
             <main class="page-main">
                 <div class="container">
-                    <section class="test-block">
-                        Test content block
-                    </section>
+                    <style>
+                        .filelist {
+                            max-width: 600px;
+                            margin-top: 50px;
+                        }
+                        .filelist__item {
+                            margin-bottom: 20px;
+                        }
 
-                    <section class="test-block test-block--with-fullpage-bg">
-                        Test content block with fullpage background
-                    </section>
+                        .filelist__link:link,
+                        .filelist__link:visited {
+                            display: block;
+                            color: white;
+                            background-color: yellowgreen;
+                            padding: 20px;
+                        }
+                    </style>
+
+                    <div id="sitemap"></div>
+
+                    <script>
+                        (async () => {
+                            const sitemap = document.querySelector('#sitemap');
+                            const filelist = await fetch('filelist.json');
+
+                            if (!filelist.ok) {
+                                sitemap.textContent = 'Error happened';
+                                sitemap.style.color = 'red';
+                                return;
+                            }
+                            let filelistParsed = await filelist.json();
+
+                            filelistParsed = filelistParsed.filter(element => element !== 'sitemap.html');
+
+                            const ul = document.createElement('ul');
+                            ul.className = 'filelist';
+
+                            filelistParsed.forEach(item => {
+                                const filelistItem = document.createElement('li');
+                                filelistItem.className = 'filelist__item';
+                                const filelistLink = document.createElement('a');
+                                filelistLink.className = 'filelist__link';
+                                filelistLink.href = item;
+                                filelistLink.textContent = item;
+                                filelistLink.target = '_blank';
+                                filelistItem.appendChild(filelistLink);
+                                ul.appendChild(filelistItem);
+                            });
+
+                            sitemap.appendChild(ul);
+                        })();
+                    </script>
                 </div>
             </main>
             <footer class="page-footer">

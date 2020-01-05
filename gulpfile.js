@@ -14,6 +14,7 @@ const cache = require('gulp-cached');
 const webpack = require('webpack');
 const webpackconfig = require('./webpack.config.js');
 const webpackstream = require('webpack-stream');
+const filelist = require('gulp-filelist');
 
 gulp.task('sprite', function() {
     return gulp
@@ -99,13 +100,13 @@ gulp.task('serve', function() {
         port: 7000,
         ghostMode: false
     });
-    gulp.watch('./src/*.+(html|njk)', gulp.series('nunjucks'));
+    gulp.watch('./src/*.+(html|nunjucks|njk)', gulp.series('nunjucks', 'filelist'));
     gulp.watch('./src/img/icons/*svg', gulp.series('sprite', 'nunjucks-recompile-all'));
-    gulp.watch('./src/templates/**/*.+(html|njk)', gulp.series('nunjucks-recompile-all'));
+    gulp.watch('./src/templates/**/*.+(html|nunjucks|njk)', gulp.series('nunjucks-recompile-all'));
     gulp.watch('./src/scss/**/*.scss', gulp.series('styles'));
     gulp.watch('./src/js/**/*.js', gulp.series('scripts'));
     gulp.watch('./src/img/**/*', gulp.series('images'));
-    gulp.watch('./src/misc/**/*', gulp.series('miscellaneous'));
+    gulp.watch('./src/assets/**/*', gulp.series('assets'));
 });
 
 gulp.task('images', function() {
@@ -116,16 +117,29 @@ gulp.task('images', function() {
         .pipe(browserSync.stream());
 });
 
-gulp.task('miscellaneous', function() {
+gulp.task('assets', function() {
     return gulp
-        .src('./src/misc/**/*')
-        .pipe(newer('./build/misc'))
-        .pipe(gulp.dest('./build/misc'))
+        .src('./src/assets/**/*')
+        .pipe(newer('./build/assets'))
+        .pipe(gulp.dest('./build/assets'))
         .pipe(browserSync.stream());
 });
 
-gulp.task('build', gulp.series('clean', 'images', 'sprite', 'nunjucks', gulp.parallel('miscellaneous', 'styles', 'scripts')));
+gulp.task('filelist', function() {
+    return gulp
+        .src('./src/*.+(html|nunjucks|njk)')
+        .pipe(
+            rename({
+                extname: '.html'
+            })
+        )
+        .pipe(filelist('filelist.json', { flatten: true }))
+        .pipe(gulp.dest('build'))
+        .pipe(browserSync.stream());
+});
 
-gulp.task('build-production', gulp.series('clean', 'images', 'sprite', 'nunjucks-recompile-all', gulp.parallel('miscellaneous', 'styles', 'scripts-production')));
+gulp.task('build', gulp.series('clean', 'images', 'sprite', 'nunjucks', 'filelist', gulp.parallel('assets', 'styles', 'scripts')));
+
+gulp.task('build-production', gulp.series('clean', 'images', 'sprite', 'nunjucks-recompile-all', 'filelist', gulp.parallel('assets', 'styles', 'scripts-production')));
 
 gulp.task('default', gulp.series('build', 'serve'));
