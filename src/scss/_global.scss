@@ -14,6 +14,7 @@
 html {
     box-sizing: border-box;
     font-size: 10px;
+    @include noHighlight();
 }
 
 body {
@@ -43,7 +44,6 @@ ol {
 
 input,
 textarea {
-    -webkit-appearance: none;
     border: none;
     border-radius: 0;
     font: inherit;
