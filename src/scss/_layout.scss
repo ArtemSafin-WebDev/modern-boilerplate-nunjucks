@@ -1,5 +1,4 @@
-.container,
-.landing-main {
+.container {
     width: 100%;
     max-width: calc(var(--max-container-width, 1200px) + (var(--content-padding, 20px) * 2));
     margin: 0 auto;

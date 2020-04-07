@@ -8,7 +8,6 @@ if (!('object-fit' in document.createElement('a').style)) {
 }
 
 export default function() {
-    
     // Полифилл .contains для IE 11
 
     if (!SVGElement.prototype.contains) {
@@ -49,7 +48,28 @@ export default function() {
 
     window.CustomEvent = CustomEvent;
 
-    // Полифилл CSS переменных
+    // Source: https://github.com/jserz/js_piece/blob/master/DOM/ParentNode/append()/append().md
+    (function(arr) {
+        arr.forEach(function(item) {
+            if (item.hasOwnProperty('append')) {
+                return;
+            }
+            Object.defineProperty(item, 'append', {
+                configurable: true,
+                enumerable: true,
+                writable: true,
+                value: function append() {
+                    var argArr = Array.prototype.slice.call(arguments),
+                        docFrag = document.createDocumentFragment();
 
-    cssVars();
+                    argArr.forEach(function(argItem) {
+                        var isNode = argItem instanceof Node;
+                        docFrag.appendChild(isNode ? argItem : document.createTextNode(String(argItem)));
+                    });
+
+                    this.appendChild(docFrag);
+                }
+            });
+        });
+    })([Element.prototype, Document.prototype, DocumentFragment.prototype]);
 }
